@@ -4,6 +4,11 @@ header {
     align-items: center;
     background-color: #C3CFD9;
     height: 67px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
 }
 
 header h1 {

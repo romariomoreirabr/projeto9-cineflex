@@ -5,14 +5,13 @@ import "./style.css";
 
 import Filme from "../Filme";
 
-export default function OpcoesFilmes() {
+export default function Filmes() {
 
     const [filmes, setFilmes] = useState([]);
 
     useEffect(() => {
         const promess = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
         promess.then((resposta) => {
-            console.log("Resposta da API" + resposta);
             setFilmes(resposta.data);
         })
     }, []);
