@@ -7,6 +7,7 @@ import Header from "../Header";
 import Inicio from "../Inicio";
 import Sessoes from "../Sessoes";
 import Assentos from "../Assentos";
+import Sucesso from "../Sucesso";
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
                 <Route path="/" element={<Inicio />} />
                 <Route path="/sessoes/:idFilme" element={<Sessoes />} />
                 <Route path="/assentos/:idSessao" element={<Assentos />} />
+                <Route path="/sucesso/:objEnviado" element={<Sucesso />} />
             </Routes>
         </BrowserRouter>
 
