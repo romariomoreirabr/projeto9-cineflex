@@ -46,7 +46,6 @@ export default function Sessao() {
                 <footer className="sessoes__footer">
                     <figure><img src={posterURL} alt="capa do filme"></img></figure>
                     <span>{title}</span>
-
                 </footer>
             </>
         )

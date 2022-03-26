@@ -4,6 +4,7 @@ import "../../assets/css/style.css";
 import Header from "../Header";
 import Inicio from "../Inicio";
 import Sessao from "../Sessao";
+import Assentos from "../Assentos";
 
 
 export default function App() {
@@ -11,7 +12,8 @@ export default function App() {
         <>
             <Header />
             {/* <Inicio /> */}
-            <Sessao />
+            {/* <Sessao /> */}
+            <Assentos />
         </>
     )
 }

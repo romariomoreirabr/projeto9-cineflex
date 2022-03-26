@@ -1,0 +1,80 @@
+.pagina__assentos {
+    margin-top: 67px;
+}
+
+.pagina__assentos .texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    padding-top: 15px;
+}
+
+.pagina__assentos .texto span {
+    font-size: 24px;
+    color: #293845;
+    font-weight: 400;
+}
+
+.pagina__assentos .assentos {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 17px 0 24px;
+}
+
+.pagina__assentos .legendas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 56px;
+}
+
+.pagina__assentos .legendas .legenda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagina__assentos .legendas .legenda .assento {
+    margin: 0 0 5px 0;
+}
+
+.pagina__assentos .legendas .legenda span {
+    font-size: 13px;
+    color: #4E5A65;
+}
+
+.pagina__assentos form {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 24px;
+}
+
+.pagina__assentos form label {
+    font-size: 18px;
+    color: #293845;
+    margin-bottom: 4px;
+}
+
+.pagina__assentos form input {
+    height: 50px;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+    margin-bottom: 12px;
+}
+
+.pagina__assentos form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45px;
+}
+.pagina__assentos form button {
+    background-color: #E8833A;
+    width: 225px;
+    height: 40px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border: 0;
+}
