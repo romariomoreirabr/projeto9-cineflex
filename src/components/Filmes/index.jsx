@@ -21,7 +21,7 @@ export default function Filmes() {
             {filmes.map((filme) => {
                 return (
                     <div key={filme.id}>
-                        <Filme posterURL={filme.posterURL} />
+                        <Filme posterURL={filme.posterURL}  idFilme={filme.id}/>
                     </div>
                 );
             })}

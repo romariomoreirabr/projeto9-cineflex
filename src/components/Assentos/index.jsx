@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Assento from "../Assento";
 
@@ -7,7 +8,7 @@ import "./style.css";
 
 
 export default function Assentos() {
-    const idSessao = 33;
+    const {idSessao} = useParams();
     const URL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`;
 
     const [dadosAPI, setDadosAPI] = useState("");
@@ -22,8 +23,8 @@ export default function Assentos() {
     if (dadosAPI.length != "") {
         const { seats, movie, day, name } = dadosAPI;
         const { title, posterURL } = movie;
-        const {weekday} = day;
-        
+        const { weekday } = day;
+
         return (
             <>
                 <div className="pagina__assentos">
@@ -34,11 +35,9 @@ export default function Assentos() {
                         {seats.map(({ id, name, isAvailable }) => {
                             // console.log(id, name, isAvailable);
                             return (
-                                <>
-                                    <div key={id + name}>
-                                        <Assento id={id} name={name} isAvailable={isAvailable} />
-                                    </div>
-                                </>
+                                <div key={id}>
+                                    <Assento id={id} name={name} isAvailable={isAvailable} />
+                                </div>
                             )
                         })}
                     </div>
@@ -58,13 +57,13 @@ export default function Assentos() {
                     </div>
                     <form action="">
                         <label htmlFor="nome">Nome do comprador:</label>
-                        <input type="text" name="nome" placeholder="Digite seu nome..." required/>
+                        <input type="text" name="nome" placeholder="Digite seu nome..." required />
                         <label htmlFor="cpf">CPF do comprador:</label>
-                        <input type="text" name="cpf" placeholder="Digite seu CPF..." required/>
+                        <input type="text" name="cpf" placeholder="Digite seu CPF..." required />
                         <div><button type="submit">Reservar assento(s)</button></div>
                     </form>
                 </div>
-                <footer className="sessoes__footer">
+                <footer className="footer">
                     <figure><img src={posterURL} alt="capa do filme"></img></figure>
                     <span>{title}<br />{weekday} - {name} </span>
                 </footer>
@@ -73,7 +72,14 @@ export default function Assentos() {
 
     } else {
         console.log("Eu não tenho algo a redenrizar!");
-        return (<><p>Eu não tenho algo a redenrizar!</p></>)
+        return (
+            <>
+                <div className="pagina__assentos">
+                    <p>Eu não tenho algo a redenrizar!</p>
+                </div>
+                <footer className="footer"></footer>
+            </>
+        )
     }
 
 }

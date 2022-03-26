@@ -39,7 +39,7 @@
     font-weight: 400;
 }
 
-.sessoes__footer {
+.footer {
     display: flex;
     align-items: center;
     position: fixed;
@@ -54,7 +54,7 @@
     z-index: 3;
 }
 
-.sessoes__footer figure {
+.footer figure {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +67,7 @@
     margin-left: 14px;
 }
 
-.sessoes__footer figure img {
+.footer figure img {
     width: 48px;
     height: 72px;
 }

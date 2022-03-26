@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 import "./style.css";
 
 export default function Assento(props) {
-    // console.log("Assento foi chamado. PROPS: " + props);
     const { id, name, isAvailable } = props;
-    // console.log(props.isAvailable);
     const [statusAssento, setStatusAssento] = useState(["", ""]);
     const status1 = isAvailable ? "disponivel" : "indisponivel";
 
@@ -31,24 +29,3 @@ export default function Assento(props) {
         </div>
     )
 }
-
-// export default function Assento(props) {
-//     console.log("Assento foi chamado. PROPS: " + props);
-//     const { id, name, isAvailable } = props;
-//     console.log(props.isAvailable);
-//     // const [statusAssento, setStatusAssento] = useState("");
-//     let status = "disponivel";
-//     if (isAvailable) {
-//         status = "disponivel";
-//     }
-//     else {
-//         status = "indisponivel";;
-//     }
-//     // setStatusAssento(status);
-//     let classe = `assento ${status}`;
-//     return (
-//         <div className={classe} key={id}>
-//             <p>{name}</p>
-//         </div>
-//     )
-// }

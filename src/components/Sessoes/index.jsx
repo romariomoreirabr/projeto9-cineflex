@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
 import "./style.css";
 
-export default function Sessao() {
-    const idFilme = 3;
+export default function Sessoes() {
+    const { idFilme } = useParams();
 
     const [sessoes, setSesoes] = useState("");
 
@@ -34,7 +35,9 @@ export default function Sessao() {
                                         {showtimes.map((times) => {
                                             const { name, id } = times;
                                             return (
-                                                <div key={id} className="button">{name}</div>
+                                                <Link to={`/assentos/${id}`} key={id}>
+                                                    <div className="button">{name}</div>
+                                                </Link>
                                             )
                                         })}
                                     </div>
@@ -43,7 +46,7 @@ export default function Sessao() {
                         })
                     }
                 </div>
-                <footer className="sessoes__footer">
+                <footer className="footer">
                     <figure><img src={posterURL} alt="capa do filme"></img></figure>
                     <span>{title}</span>
                 </footer>
