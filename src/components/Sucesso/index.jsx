@@ -1,22 +1,51 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
+import "./style.css";
 
 export default function Sucesso() {
     alert("Página de Sucesso!");
+
+    const { state } = useLocation();
+    const { filme, data, horario, assentos, nome, cpf } = state;
+    console.log(filme, data, horario, assentos, nome, cpf);
 
     // const params = useParams();
     // console.log(params);
     // const {filme, data,horario, assentos, nome, cpf} = params;
 
-
     return (
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem dolores voluptatum iure, fugiat nesciunt adipisci in optio repellat, eius excepturi molestiae minima maiores! Commodi excepturi voluptas amet necessitatibus quos quis!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum adipisci architecto tempora voluptatem dolorum laudantium, atque vel, animi doloribus, labore doloremque laborum delectus provident at nobis ducimus quos dolore dicta.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, odit officiis. Quam et nam veniam eligendi facere aspernatur quaerat tempore, qui asperiores alias odit magni perferendis beatae exercitationem id debitis?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde sed eius perferendis eos assumenda officiis doloremque iste voluptates aliquam ratione! Mollitia sint numquam recusandae dolorem delectus maiores eos odit ducimus.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolores omnis ducimus aut reiciendis ea! Repellat quae odit eius, iusto, velit maiores aliquam praesentium optio in aspernatur alias sit illo?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi iure reiciendis beatae magni, impedit natus! Perspiciatis delectus in ratione expedita inventore, accusantium, ducimus provident nulla, quisquam excepturi consequuntur. Provident.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex reiciendis, repellendus, officia hic voluptatem officiis quidem odio quasi libero doloremque unde fugit? Maxime aliquid aut pariatur, blanditiis vel architecto deleniti?
-        </div>
+        <>
+            <div className="sucesso">
+                <div className="titulo"><p>Pedido feito<br />com sucesso!</p></div>
+                <div className="conteudo">
+                    <div className="dados">
+                        <strong>Filme e sessão</strong>
+                        <span>{filme}</span>
+                        <span>{data} {horario}</span>
+                    </div>
+                    <div className="dados">
+                        <strong>Ingressos</strong>
+                        {
+                            assentos.map((assento) => {
+                                return (
+                                    <span id={assento}>Assento {assento}</span>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="dados">
+                        <strong>Comprador</strong>
+                        <span>Nome:{nome}</span>
+                        <span>CPF: {cpf}</span>
+                    </div>
+
+                </div>
+                <div className="botao">
+                    <button>Voltar pra Home</button>
+                </div>
+            </div>
+
+        </>
+
     )
 }

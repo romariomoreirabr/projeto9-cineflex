@@ -47,19 +47,23 @@ export default function Assentos() {
             const request = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", objeto);
             request.then((resposta) => {
 
-                // const informacoesSucesso = {
-                //     filme: dadosAPI.movie.title,
-                //     data: dadosAPI.day.date,
-                //     horario:  dadosAPI.name,
-                //     assentos: assentosSelecionados,
-                //     nome: nomeFormulario,
-                //     cpf: cpfFormulario
-                // }
+                const informacoesSucesso = {
+                    filme: dadosAPI.movie.title,
+                    data: dadosAPI.day.date,
+                    horario:  dadosAPI.name,
+                    assentos: assentosSelecionados,
+                    nome: nomeFormulario,
+                    cpf: cpfFormulario
+                }
 
-                console.log(resposta);
+                const {filme, data,horario, assentos, nome, cpf} = informacoesSucesso;
+
+                // console.log("Resposta: " + resposta);
+                // console.log("Informações Sucesso: " + filme, data, horario, assentos, nome, cpf);
+
                 alert("Enviado com sucesso!");
-                navigate(`/sucesso/`);
-                // navigate(`/sucesso/${informacoesSucesso}`);
+                // navigate(`/sucesso/`);
+                navigate(`/sucesso`, {state: {filme: filme, data: data, horario: horario, assentos: assentos, nome: nome, cpf: cpf}});
             })
             request.catch(() => {
                 alert("Ocorreu algum erro!");

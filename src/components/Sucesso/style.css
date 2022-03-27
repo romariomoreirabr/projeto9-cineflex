@@ -1,0 +1,62 @@
+.sucesso {
+    margin-top: 67px;
+    width: 100%;
+    height: 100%;
+}
+
+.sucesso .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 100%;
+}
+
+.sucesso .titulo p {
+    font-size: 24px;
+    color: #247A6B;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sucesso .conteudo {
+    display: flex;
+    flex-direction: column;
+    color: #293845;
+    margin-left: 28px;
+}
+
+.sucesso .conteudo .dados {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.sucesso .conteudo .dados strong {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.sucesso .conteudo .dados span {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.sucesso .botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 65px;
+}
+
+.sucesso .botao button {
+    background-color: #E8833A;
+    width: 225px;
+    height: 40px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border: 0;
+}
