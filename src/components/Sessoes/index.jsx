@@ -6,7 +6,6 @@ import "./style.css";
 
 export default function Sessoes() {
     const { idFilme } = useParams();
-
     const [sessoes, setSesoes] = useState("");
 
     useEffect(() => {
@@ -14,7 +13,10 @@ export default function Sessoes() {
         const promiss = axios.get(URL);
         promiss.then((resposta) => {
             setSesoes(resposta.data);
-        })
+        });
+        promiss.catch(() => {
+            alert("Ocorreu algum erro!");
+        });
     }, []);
 
     if (sessoes !== "") {
@@ -62,5 +64,4 @@ export default function Sessoes() {
                 </div>
             </>
         )
-
 }

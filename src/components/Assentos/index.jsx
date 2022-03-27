@@ -6,40 +6,43 @@ import Assento from "../Assento";
 
 import "./style.css";
 
-
 export default function Assentos() {
     const { idSessao } = useParams();
     const URL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`;
 
     const [dadosAPI, setDadosAPI] = useState("");
-    const [assentosSelecionados, setAssentosSelecionados] = useState([]);
+    const [assentosSelecionados, setAssentosSelecionados] = useState({
+        idAssento: [],
+        nameAssento: []
+    });
     const [nomeFormulario, setNomeFomulario] = useState("");
     const [cpfFormulario, setCpfFomulario] = useState("");
 
     const navigate = useNavigate();
 
-    function buscarAssentosSelecionados(idAssento) {
-        const posElementoNoArray = assentosSelecionados.findIndex(elemento => elemento === idAssento);
-        console.log("Já tem? " + posElementoNoArray);
+    function buscarAssentosSelecionados({ idAssento, nameAssento }) {
+        let arrayID = [...assentosSelecionados.idAssento];
+        let arrayName = [...assentosSelecionados.nameAssento];
+
+        const posElementoNoArray = arrayID.findIndex(elemento => elemento === idAssento);
+
         if (posElementoNoArray === -1) { //Não existe no Array
-            let arrayAssentos = [...assentosSelecionados, idAssento];
-            setAssentosSelecionados(arrayAssentos);
+            arrayID.push(idAssento);
+            arrayName.push(nameAssento);
+            setAssentosSelecionados({ idAssento: arrayID, nameAssento: arrayName });
         } else { //Existe no array
-            let arrayAssentos = [...assentosSelecionados];
-            arrayAssentos.splice(posElementoNoArray, 1);
-            setAssentosSelecionados(arrayAssentos);
+            arrayID.splice(posElementoNoArray, 1);
+            arrayName.splice(posElementoNoArray, 1);
+            setAssentosSelecionados({ idAssento: arrayID, nameAssento: arrayName });
         }
     }
 
     function enviarDadosAPI(event) {
         event.preventDefault();
-        if (nomeFormulario !== "" && cpfFormulario !== "" && assentosSelecionados.length !== 0) {
-            console.log("IDs: " + assentosSelecionados);
-            console.log("NAME: " + nomeFormulario);
-            console.log("CPF: " + cpfFormulario);
+        if (nomeFormulario !== "" && cpfFormulario !== "" && assentosSelecionados.idAssento.length !== 0) {
 
             const objeto = {
-                ids: assentosSelecionados,
+                ids: assentosSelecionados.idAssento,
                 name: nomeFormulario,
                 cpf: cpfFormulario
             }
@@ -50,24 +53,20 @@ export default function Assentos() {
                 const informacoesSucesso = {
                     filme: dadosAPI.movie.title,
                     data: dadosAPI.day.date,
-                    horario:  dadosAPI.name,
-                    assentos: assentosSelecionados,
+                    horario: dadosAPI.name,
+                    assentos: assentosSelecionados.nameAssento,
                     nome: nomeFormulario,
                     cpf: cpfFormulario
                 }
 
-                const {filme, data,horario, assentos, nome, cpf} = informacoesSucesso;
-
-                // console.log("Resposta: " + resposta);
-                // console.log("Informações Sucesso: " + filme, data, horario, assentos, nome, cpf);
+                const { filme, data, horario, assentos, nome, cpf } = informacoesSucesso;
 
                 alert("Enviado com sucesso!");
-                // navigate(`/sucesso/`);
-                navigate(`/sucesso`, {state: {filme: filme, data: data, horario: horario, assentos: assentos, nome: nome, cpf: cpf}});
-            })
+                navigate(`/sucesso`, { state: { filme: filme, data: data, horario: horario, assentos: assentos, nome: nome, cpf: cpf } });
+            });
             request.catch(() => {
                 alert("Ocorreu algum erro!");
-            })
+            });
         }
     }
 
@@ -122,7 +121,7 @@ export default function Assentos() {
                             }}
                         />
                         <label htmlFor="cpf">CPF do comprador:</label>
-                        <input type="text" name="cpf" placeholder="Digite seu CPF..." required value={cpfFormulario}
+                        <input type="text" name="cpf" placeholder="Digite seu CPF..." pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" maxLength="11" minLength="11" required value={cpfFormulario}
                             onChange={(event) => {
                                 setCpfFomulario(event.target.value)
                             }}
@@ -138,11 +137,10 @@ export default function Assentos() {
         )
 
     } else {
-        console.log("Eu não tenho algo a redenrizar!");
         return (
             <>
                 <div className="pagina__assentos">
-                    <p>Eu não tenho algo a redenrizar!</p>
+                    <p>Carregando...</p>
                 </div>
                 <footer className="footer"></footer>
             </>

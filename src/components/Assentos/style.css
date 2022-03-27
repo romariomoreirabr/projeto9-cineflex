@@ -1,5 +1,5 @@
 .pagina__assentos {
-    margin-top: 67px;
+    margin: 67px 0 120px 0 ;
 }
 
 .pagina__assentos .texto {
@@ -61,7 +61,22 @@
     border: 1px solid #D5D5D5;
     border-radius: 3px;
     margin-bottom: 12px;
+    padding-left: 18px;
 }
+
+/* Configurações do Placeholder */
+.pagina__assentos form input:-moz-placeholder { 
+    font-style: italic;
+    font-size: 18px;
+    color: #AFAFAF;
+    font-family: 'Roboto', sans-serif;
+}
+ ::-webkit-input-placeholder  { 
+    font-style: italic;
+    font-size: 18px;
+    color: #AFAFAF;
+    font-family: 'Roboto', sans-serif;
+ }
 
 .pagina__assentos form div {
     display: flex;

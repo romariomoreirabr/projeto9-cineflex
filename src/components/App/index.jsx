@@ -9,7 +9,6 @@ import Sessoes from "../Sessoes";
 import Assentos from "../Assentos";
 import Sucesso from "../Sucesso";
 
-
 export default function App() {
     return (
         <BrowserRouter>
@@ -21,12 +20,5 @@ export default function App() {
                 <Route path="/sucesso" element={<Sucesso />} />
             </Routes>
         </BrowserRouter>
-
-        // <>
-        //     <Header />
-        //     <Inicio />
-        //     {/* <Sessao /> */}
-        //     {/* <Assentos /> */}
-        // </>
     )
 }

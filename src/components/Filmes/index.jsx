@@ -13,7 +13,10 @@ export default function Filmes() {
         const promess = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
         promess.then((resposta) => {
             setFilmes(resposta.data);
-        })
+        });
+        promess.catch(() => {
+            alert("Ocorreu algum erro!");
+        });
     }, []);
 
     return (
@@ -21,7 +24,7 @@ export default function Filmes() {
             {filmes.map((filme) => {
                 return (
                     <div key={filme.id}>
-                        <Filme posterURL={filme.posterURL}  idFilme={filme.id}/>
+                        <Filme posterURL={filme.posterURL} idFilme={filme.id} />
                     </div>
                 );
             })}

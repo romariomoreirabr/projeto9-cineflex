@@ -1,17 +1,11 @@
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "./style.css";
 
 export default function Sucesso() {
-    alert("Página de Sucesso!");
 
     const { state } = useLocation();
     const { filme, data, horario, assentos, nome, cpf } = state;
-    console.log(filme, data, horario, assentos, nome, cpf);
-
-    // const params = useParams();
-    // console.log(params);
-    // const {filme, data,horario, assentos, nome, cpf} = params;
 
     return (
         <>
@@ -28,7 +22,7 @@ export default function Sucesso() {
                         {
                             assentos.map((assento) => {
                                 return (
-                                    <span id={assento}>Assento {assento}</span>
+                                    <span key={assento}>Assento {assento}</span>
                                 )
                             })
                         }
@@ -38,14 +32,13 @@ export default function Sucesso() {
                         <span>Nome:{nome}</span>
                         <span>CPF: {cpf}</span>
                     </div>
-
                 </div>
-                <div className="botao">
-                    <button>Voltar pra Home</button>
-                </div>
+                <Link to="/">
+                    <div className="botao">
+                        <button>Voltar pra Home</button>
+                    </div>
+                </Link>
             </div>
-
         </>
-
     )
 }
